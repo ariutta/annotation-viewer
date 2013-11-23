@@ -21,14 +21,14 @@ Input Data Format
   "description": "My Description",
   "listItems": [
     {
-      'key': 'Item Title',
-      'values': [
+      "key": "Item Title",
+      "values": [
         {
-          'text': 'item text1',
-          'uri': 'http://www.example.org/1'
+          "text": "item text1",
+          "uri": "http://www.example.org/1"
         },
         {
-          'text': 'item text2'
+          "text": "item text2"
         }
       ]
     }
