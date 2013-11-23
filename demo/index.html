@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../src/annotation.css">
+  </head>
+  <body>
+    <h1>Annotation Demo</h1>
+    <div id="my-annotation"></div>
+    <script src="../src/js/annotation.js"></script>
+    <script>
+      var annotationData = {};
+      annotationData.header = "My Header";
+      annotationData.description = "My Description";
+      annotationData.listItems = [];
+      annotationData.listItems.push(
+        {
+          'key': 'Item Title',
+          'values': [
+            {
+              'text': 'item text1',
+              'uri': 'http://www.example.org/1'
+            },
+            {
+              'text': 'item text2'
+            }
+          ]
+        }
+      );
+      annotation.render(annotationData, '#my-annotation');
+    </script>
+  </body>
+</html>
