@@ -1,8 +1,56 @@
-annotation = function(){
-  function render(annotationData, target) {
-    self.annotationData = annotationData;
-    var annotation = d3.select("#annotation")
-    .data([annotationData])
+annotationViewer = function(args){
+
+var multiString = function(f) {
+  return f.toString().split('\n').slice(1, -1).join('\n');
+}
+
+var annotationHtml = multiString(function() {/**
+<div id="annotation" class="annotation ui-draggable" style="visibility: hidden; position: absolute; right: 75px; top: 100px;">
+  <header class="annotation-header">
+  <span id="annotation-move" class="annotation-header-move">
+    <i class="fa fa-arrows"></i>
+  </span>
+  <span id="annotation-header-text" class="annotation-header-text">
+    Header
+  </span> 
+  <span class="annotation-header-close" class="annotation-header-close">
+    <i class="fa fa-times"></i>
+  </span>
+  <div id="annotation-description" class="annotation-description">
+    <h2>description</h2>
+  </div>
+  </header>
+  <span class="annotation-items-container" class="annotation-items-container">
+    <ul id="annotation-items-container">
+      <!-- List items inside this ul element are generated automatically by JavaScript.
+      Each item will be composed of a title and text. The text can be set to be an href.
+      You can edit the styling of the title by editing CSS class "annotation-item-title"
+      and the styling of the text by editing CSS class "annotation-item-text.
+      -->
+    </ul>
+  </span>
+</div>
+**/});
+
+
+
+  function init(args) {
+    var targetElement = document.querySelector(args.target);
+    targetElement.innerHTML = annotationHtml;
+
+    var annotationIcon = d3.select(args.icon)
+    .on('click', function() {
+      return annotationViewer.render(args.annotationData);
+    })
+  }
+
+  function render(annotationData) {
+    console.log('annotationData');
+    console.log(annotationData);
+
+
+    var annotation = d3.select('#annotation')
+    .data([annotationData]);
 
     var annotationHeaderText = annotation.select('#annotation-header-text')
     .text(function(d) { return d.header; });
@@ -24,13 +72,8 @@ annotation = function(){
 
     var annotationListItemsContainer = annotation.selectAll('#annotation-items-container')
     .data(function(d) {
-      console.log('d annotationListItemsContainer');
-      console.log(d);
-      console.log([d.listItems]);
       return [d.listItems];
     });
-
-    console.log(annotationListItemsContainer);
 
     // Update
     var annotationListItems = annotationListItemsContainer.selectAll('li')
@@ -106,6 +149,7 @@ annotation = function(){
   }
       
   return {
+    init:init,
     render:render
   };
 }();

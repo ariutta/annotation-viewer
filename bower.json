@@ -1,0 +1,27 @@
+{
+  "name": "annotation-viewer",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ariutta/annotation-viewer",
+  "authors": [
+    "Anders Riutta <git@andersriutta.com>"
+  ],
+  "description": "Viewer pop-over panel for annotations in JS/HTML environments.",
+  "main": "./src/js/annotation.js",
+  "keywords": [
+    "annotation",
+    "diagram",
+    "details"
+  ],
+  "license": "Apache v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.3.10",
+    "font-awesome": "~4.0.3"
+  }
+}
