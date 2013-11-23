@@ -45,10 +45,6 @@ var annotationHtml = multiString(function() {/**
   }
 
   function render(annotationData) {
-    console.log('annotationData');
-    console.log(annotationData);
-
-
     var annotation = d3.select('#annotation')
     .data([annotationData]);
 
@@ -78,8 +74,6 @@ var annotationHtml = multiString(function() {/**
     // Update
     var annotationListItems = annotationListItemsContainer.selectAll('li')
     .data(function(d) {
-      console.log('d annotationListItems');
-      console.log(d);
       return d;
     });
 
@@ -91,8 +85,6 @@ var annotationHtml = multiString(function() {/**
 
     var annotationItemTitles = annotationListItems.selectAll('.annotation-item-title')
     .data(function(d) {
-      console.log('d annotationListItems');
-      console.log(d);
       return [d.key];
     })
     .enter().append('span')
@@ -104,8 +96,6 @@ var annotationHtml = multiString(function() {/**
     .data(function(d) {
       return d.values.filter(function(element) {
         if (!element.hasOwnProperty('uri')) {
-          console.log('annotationItemPlainTextElement');
-          console.log(element);
           return element; 
         }
       });
